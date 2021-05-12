@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    background-color: #F6F6F6;
+    background: #F6F6F6;
     padding-bottom: 30px;
     padding-top: 30px;
     font-size: 1.6rem;
@@ -24,6 +24,7 @@ header {
 }
 
 .calculator {
+    background: #A9A9A9;
     max-width: 400px;
     margin: 0 auto;
     border: 2px solid #111;
@@ -52,14 +53,46 @@ header {
     display: grid;
     grid-template-rows: repeat(5, 1fr);
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
 
+}
+
+/* Span across 3 columns for the CLEAR and ZERO buttons */
+.is-zero,
+.is-clear {
+    grid-column: span 3;
+}
+
+/* Change background color for specific buttons */
+.is-divide {
+    background: #ffb347;
+}
+
+.is-divide:hover {
+    background: #ff9500;
+}
+
+.is-clear {
+    background: #779ecb;
+}
+
+.is-clear:hover {
+    background: #467cb9;
+}
+
+.is-equals {
+    background: #77dd77;
+}
+
+.is-equals:hover {
+    background: #47d147;
 }
 
 .calc-button {
     background: rbga(0, 0, 0, 0.5);
     border: 1px solid #111;
     padding: 20px;
-    color: #EEE;
+    color: black;
     border-radius: 5px;
     font-size: 22px;
     cursor: pointer;
