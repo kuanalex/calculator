@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    background-color: #f6f6f6;
+    background-color: #F6F6F6;
     padding-bottom: 30px;
     padding-top: 30px;
     font-size: 1.6rem;
@@ -18,9 +18,9 @@ body {
 }
 
 header {
-    margin-top: 3rem;
-    padding: 2rem;
-    font-size: 3.2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    font-size: 3rem;
 }
 
 .calculator {
@@ -34,11 +34,15 @@ header {
     background: none;
     border: none;
     box-shadow: none;
+    outline: none;
+
+    padding: 10px;
     width: 100%;
     border-bottom: 2px solid #111;
-    padding: 20px;
+    color: #333;
     text-align: right;
     font-size: 40px;
+    border-radius: 0;
 }
 
 .calculator-buttons {
