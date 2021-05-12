@@ -1,0 +1,17 @@
+html {
+    font-family: "Roboto", sans-serif;
+    font-size: 62.5%;
+    line-height: 1.6;
+}
+
+body {
+    background-color: var(--background);
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+header {
+    margin-top: 3rem;
+    padding: 2rem;
+    font-size: 3.2rem;
+}
