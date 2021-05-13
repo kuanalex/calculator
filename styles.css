@@ -24,7 +24,7 @@ header {
 }
 
 .calculator {
-    background: #A9A9A9;
+    background: #cfcfc4;
     max-width: 400px;
     margin: 0 auto;
     border: 2px solid #111;
@@ -58,34 +58,55 @@ header {
 }
 
 /* Span across 3 columns for the CLEAR and ZERO buttons */
-.is-zero,
-.is-clear {
-    grid-column: span 3;
+.is-equals {
+    grid-row: span 4;
 }
 
 /* Change background color for specific buttons */
-.is-divide {
+.is-plus {
+    background: #ff6961;
+
+}
+
+.is-plus:hover {
+    background: #ff251a;
+}
+
+.is-minus {
     background: #ffb347;
+
+}
+
+.is-minus:hover {
+    background: #ff9500;
+
+}
+
+.is-times {
+    background: #fdfd96;
+
+}
+
+.is-times:hover {
+    background: #fbfb50;
+
+}
+
+.is-divide {
+    background: #77dd77;
+
 }
 
 .is-divide:hover {
-    background: #ff9500;
-}
-
-.is-clear {
-    background: #779ecb;
-}
-
-.is-clear:hover {
-    background: #467cb9;
+    background: #47d147;
 }
 
 .is-equals {
-    background: #77dd77;
+    background: #779ecb;
 }
 
 .is-equals:hover {
-    background: #47d147;
+    background: #467cb9;
 }
 
 .calc-button {

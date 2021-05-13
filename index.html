@@ -19,29 +19,36 @@
 
         <div class="calculator">
 
-            <input type="number" placeholder="0" id="display">
+            <div class="calculator-display">
+                <input type="number" placeholder="0" id="display">
+            </div>
+            
 
             <div class="calculator-buttons">
-                <button class="calc-button is-clear" data-action="clear">C</button>
-                <button class="calc-button is-divide key--operator" data-action="divide">&divide;</button>
+                
+                <button class="calc-button key--operator is-plus" data-action="add">&plus;</button>
+                <button class="calc-button key--operator is-minus" data-action="subtract">&minus;</button>
+                <button class="calc-button key--operator is-times" data-action="multiply">&times;</button>
+                <button class="calc-button key--operator is-divide" data-action="divide">&divide;</button>
 
                 <button class="calc-button">7</button>
                 <button class="calc-button">8</button>
                 <button class="calc-button">9</button>
-                <button class="calc-button key--operator" data-action="multiply">&times;</button>
+                <button class="calc-button is-equals key--equal" data-action="calculate">&equals;</button>
+                
 
                 <button class="calc-button">4</button>
                 <button class="calc-button">5</button>
                 <button class="calc-button">6</button>
-                <button class="calc-button key--operator" data-action="subtract">&minus;</button>
+                
 
                 <button class="calc-button">1</button>
                 <button class="calc-button">2</button>
                 <button class="calc-button">3</button>
-                <button class="calc-button key--operator" data-action="add">&plus;</button>
-
-                <button class="calc-button is-zero">0</button>
-                <button class="calc-button is-equals key--equal" data-action="calculate">&equals;</button>
+                
+                <button class="calc-button">0</button>
+                <button class="calc-button">.</button>
+                <button class="calc-button is-clear" data-action="clear">AC</button>
 
             </div>
 
