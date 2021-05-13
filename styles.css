@@ -16,7 +16,7 @@ input[type=number] {
 
 
 html {
-    font-family: "Roboto", sans-serif;
+    font-family: "Arial", sans-serif;
     font-size: 62.5%;
     line-height: 1.6;
 }
@@ -58,7 +58,7 @@ header {
     border-radius: 0;
 }
 
-.calculator-buttons {
+.calculator__keys {
     padding: 20px;
 
     /* grid stuff will take place */
