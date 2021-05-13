@@ -2,6 +2,18 @@
     box-sizing: border-box;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 
 html {
     font-family: "Roboto", sans-serif;
@@ -62,6 +74,17 @@ header {
     grid-row: span 4;
 }
 
+
+.calc-button {
+    background: rbga(0, 0, 0, 0.5);
+    border: 1px solid #111;
+    padding: 20px;
+    color: black;
+    border-radius: 5px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
 /* Change background color for specific buttons */
 .is-plus {
     background: #ff6961;
@@ -107,14 +130,4 @@ header {
 
 .is-equals:hover {
     background: #467cb9;
-}
-
-.calc-button {
-    background: rbga(0, 0, 0, 0.5);
-    border: 1px solid #111;
-    padding: 20px;
-    color: black;
-    border-radius: 5px;
-    font-size: 22px;
-    cursor: pointer;
 }
