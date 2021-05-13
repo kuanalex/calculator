@@ -66,7 +66,6 @@ header {
 /* Change background color for specific buttons */
 .is-divide {
     background: #ffb347;
-    !important;
 }
 
 .is-divide:hover {
@@ -75,7 +74,6 @@ header {
 
 .is-clear {
     background: #779ecb;
-    !important;
 }
 
 .is-clear:hover {
@@ -84,7 +82,6 @@ header {
 
 .is-equals {
     background: #77dd77;
-    !important;
 }
 
 .is-equals:hover {
@@ -99,8 +96,4 @@ header {
     border-radius: 5px;
     font-size: 22px;
     cursor: pointer;
-}
-
-.calc-button:hover {
-    background: #808080;
 }
