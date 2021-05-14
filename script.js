@@ -39,6 +39,7 @@ keys.addEventListener('click', e => {
             } else {
                 display.textContent = displayedNum + keyContent;
             }
+            calculator.dataset.previousKey = 'number';
             console.log('number key');
         }
 
@@ -49,24 +50,35 @@ keys.addEventListener('click', e => {
             action === 'multiply' ||
             action === 'divide'
         ) {
-            key.classList.add('is-depressed');
+            const firstValue = calculator.dataset.firstValue;
+            const operator = calculator.dataset.operator;
+            const secondValue = displayedNum;
 
             // Add custom attribute to tell if the previous key is an operator key
+            key.classList.add('is-depressed');
             calculator.dataset.previousKeyType = 'operator';
             calculator.dataset.firstValue = displayedNum;
             calculator.dataset.operator = action;
             console.log('operator key!');
         }
 
+        if (firstValue && operator) {
+            display.textContent = calculate(firstValue, operator, secondValue);
+        }
+
         // Append a decimal to the number if the decimal key is pressed
         if (action === 'decimal') {
             if (!displayedNum.includes('.')) {
                 display.textContent = displayedNum + '.'
+            } else if (previousKeyType === 'operator') {
+                display.textContent = '0.'
             }
+            calculator.dataset.previousKey = 'decimal';
             console.log('decimal key!');
         }
 
         if (action === 'clear') {
+            calculator.dataset.previousKey = 'clear';
             console.log('clear key!');
         }
 
@@ -75,15 +87,14 @@ keys.addEventListener('click', e => {
             const operator = calculator.dataset.operator;
             const secondValue = displayedNum;
             display.textContent = calculate(firstValue, operator, secondValue);
+            calculator.dataset.previousKey = 'calculate';
             console.log('equal key!');
         }
-
-
     }
 })
 
 const calculate = (n1, operator, n2) => {
-    let result = ''
+    let result = '';
 
     if (operator === 'add') {
         result = parseFloat(n1) + parseFloat(n2);

@@ -132,3 +132,7 @@ header {
 .is-equals:hover {
     background: #467cb9;
 }
+
+.is-depressed {
+    background: #666666;
+}
