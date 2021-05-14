@@ -2,10 +2,11 @@
 const calculator = document.querySelector('.calculator');
 const keys = calculator.querySelector('.keys');
 const display = document.querySelector('.display');
+const screen = document.querySelector('.screen');
 
 //Reset the display when the page is refreshed
 window.addEventListener('load', e => {
-    display.value = "";
+    screen.value = "0";
 });
 
 keys.addEventListener('click', e => {
@@ -16,12 +17,11 @@ keys.addEventListener('click', e => {
 
         // Get the number of the key that was clicked and the current displayed number
         const keyContent = key.textContent;
-        console.log(keyContent);
-        const displayedNum = display.value;
+        const displayedNum = screen.value; // 
+        // console.log(displayedNum + " previous value");
 
         //Replace displayed number with clicked number if the previous key is an operator
         const previousKeyType = calculator.dataset.previousKeyType;
-        console.log(previousKeyType);
 
         // Remove is-depressed class from all keys
         Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'));
@@ -31,10 +31,12 @@ keys.addEventListener('click', e => {
         // Append the displays if the display is not "0"
 
         if (!action) {
-            if (displayedNum === "" || previousKeyType === 'operator') {
-                display.value = keyContent;
+            if (displayedNum === "0" || displayedNum === "" || previousKeyType === 'operator') {
+                screen.value = keyContent;
             } else {
-                display.value = displayedNum + keyContent;
+                const newValue = displayedNum + keyContent;
+                screen.value = newValue;
+                // console.log(newValue + " current value");
             }
             calculator.dataset.previousKey = 'number';
             console.log('number key');
@@ -51,17 +53,13 @@ keys.addEventListener('click', e => {
             const operator = calculator.dataset.operator;
             const secondValue = displayedNum;
 
-            console.log(firstValue);
-            console.log(operator);
-            console.log(secondValue);
-
             if (
                 firstValue &&
                 operator &&
                 previousKeyType !== 'operator'
             ) {
                 const calcValue = calculate(firstValue, operator, secondValue);
-                display.textContent = calcValue;
+                screen.value = calcValue;
 
                 // Update calculated value as firstValue
                 calculator.dataset.firstValue = calcValue;
@@ -83,16 +81,17 @@ keys.addEventListener('click', e => {
         // Append a decimal to the number if the decimal key is pressed
         if (action === 'decimal') {
             if (!displayedNum.includes('.')) {
-                display.textContent = displayedNum + '.'
+                screen.value = displayedNum + '.'
             } else if (previousKeyType === 'operator') {
-                display.textContent = '0.'
+                screen.value = '0.'
             }
+            
             calculator.dataset.previousKey = 'decimal';
             console.log('decimal key!');
         }
 
         if (action === 'clear') {
-            display.value = "";
+            screen.value = "";
             firstValue = 0;
             secondValue = 0;
             calculator.dataset.previousKey = 'clear';
@@ -103,7 +102,7 @@ keys.addEventListener('click', e => {
             const firstValue = calculator.dataset.firstValue;
             const operator = calculator.dataset.operator;
             const secondValue = displayedNum;
-            display.textContent = calculate(firstValue, operator, secondValue);
+            screen.value = calculate(firstValue, operator, secondValue);
             calculator.dataset.previousKey = 'calculate';
             console.log('equal key!');
         }
