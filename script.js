@@ -54,6 +54,14 @@ keys.addEventListener('click', e => {
             const operator = calculator.dataset.operator;
             const secondValue = displayedNum;
 
+            if (
+                firstValue &&
+                operator &&
+                previousKeyType !== 'operator'
+            ) {
+                display.textContent = calculate(firstValue, operator, secondValue)
+            }
+
             // Add custom attribute to tell if the previous key is an operator key
             key.classList.add('is-depressed');
             calculator.dataset.previousKeyType = 'operator';
@@ -62,9 +70,6 @@ keys.addEventListener('click', e => {
             console.log('operator key!');
         }
 
-        if (firstValue && operator) {
-            display.textContent = calculate(firstValue, operator, secondValue);
-        }
 
         // Append a decimal to the number if the decimal key is pressed
         if (action === 'decimal') {
