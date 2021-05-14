@@ -1,17 +1,12 @@
-// const button = document.querySelector(".calc-button");
-// button.addEventListener("click", (event) => {
-//     console.log(event.target.id);
-// });
-
-// This code adds an event listener for each of the buttons on the calculator
-// Currently, clicking the button will console log the button ID
-// I will be using these button IDs to help with the calculations later
-// Rework this function to display the value of the button when
-
 // Listen for key presses and determine the type of key pressed
 const calculator = document.querySelector('.calculator');
-const keys = calculator.querySelector('.calculator__keys');
-const display = document.querySelector('.calculator__display');
+const keys = calculator.querySelector('.keys');
+const display = document.querySelector('.display');
+
+//Reset the display when the page is refreshed
+window.addEventListener('load', e => {
+    display.value = "";
+});
 
 keys.addEventListener('click', e => {
     if (e.target.matches('button')) {
@@ -21,10 +16,12 @@ keys.addEventListener('click', e => {
 
         // Get the number of the key that was clicked and the current displayed number
         const keyContent = key.textContent;
-        const displayedNum = display.textContent;
+        console.log(keyContent);
+        const displayedNum = display.value;
 
         //Replace displayed number with clicked number if the previous key is an operator
         const previousKeyType = calculator.dataset.previousKeyType;
+        console.log(previousKeyType);
 
         // Remove is-depressed class from all keys
         Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'));
@@ -34,16 +31,16 @@ keys.addEventListener('click', e => {
         // Append the displays if the display is not "0"
 
         if (!action) {
-            if (displayedNum === '0' || previousKeyType === 'operator') {
-                display.textContent = keyContent;
+            if (displayedNum === "" || previousKeyType === 'operator') {
+                display.value = keyContent;
             } else {
-                display.textContent = displayedNum + keyContent;
+                display.value = displayedNum + keyContent;
             }
             calculator.dataset.previousKey = 'number';
             console.log('number key');
         }
 
-        // If the key has a data-action attribute that is add, subtract, multiply or divide, it is an operator
+        // If the key has an action, it is an operator
         if (
             action === 'add' ||
             action === 'subtract' ||
@@ -54,13 +51,25 @@ keys.addEventListener('click', e => {
             const operator = calculator.dataset.operator;
             const secondValue = displayedNum;
 
+            console.log(firstValue);
+            console.log(operator);
+            console.log(secondValue);
+
             if (
                 firstValue &&
                 operator &&
                 previousKeyType !== 'operator'
             ) {
-                display.textContent = calculate(firstValue, operator, secondValue)
+                const calcValue = calculate(firstValue, operator, secondValue);
+                display.textContent = calcValue;
+
+                // Update calculated value as firstValue
+                calculator.dataset.firstValue = calcValue;
+            } else {
+                // If there are no calculations, set displayedNum as the firstValue
+                calculator.dataset.firstValue = displayedNum;
             }
+
 
             // Add custom attribute to tell if the previous key is an operator key
             key.classList.add('is-depressed');
@@ -83,6 +92,9 @@ keys.addEventListener('click', e => {
         }
 
         if (action === 'clear') {
+            display.value = "";
+            firstValue = 0;
+            secondValue = 0;
             calculator.dataset.previousKey = 'clear';
             console.log('clear key!');
         }
