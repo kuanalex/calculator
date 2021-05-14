@@ -23,14 +23,16 @@ keys.addEventListener('click', e => {
         const keyContent = key.textContent;
         const displayedNum = display.textContent;
 
+        //Replace displayed number with clicked number if the previous key is an operator
+        const previousKeyType = calculator.dataset.previousKeyType;
+
         // Remove is-depressed class from all keys
         Array.from(key.parentNode.children).forEach(k => k.classList.remove('is-depressed'));
 
         // Keys without a data-action must be a number key
         // Update the display if the display shows "0"
         // Append the displays if the display is not "0"
-        //Replace displayed number with clicked number if the previous key is an operator
-        const previousKeyType = calculator.dataset.previousKeyType;
+
         if (!action) {
             if (displayedNum === '0' || previousKeyType === 'operator') {
                 display.textContent = keyContent;
@@ -58,7 +60,9 @@ keys.addEventListener('click', e => {
 
         // Append a decimal to the number if the decimal key is pressed
         if (action === 'decimal') {
-            display.textContent = displayedNum + '.';
+            if (!displayedNum.includes('.')) {
+                display.textContent = displayedNum + '.'
+            }
             console.log('decimal key!');
         }
 
