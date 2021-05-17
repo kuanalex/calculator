@@ -14,7 +14,7 @@ let shouldResetScreen = false;
 equalsButton.addEventListener("click", () => console.log("equals button pressed"));
 clearButton.addEventListener("click", clear);
 deleteButton.addEventListener("click", () => console.log("delete button pressed"));
-pointButton.addEventListener("click", () => console.log("decimal button pressed"));
+pointButton.addEventListener("click", appendPoint);
 
 
 numberButtons.forEach((button) =>
@@ -40,4 +40,11 @@ function clear() {
     firstOperand = "";
     secondOperand = "";
     currentOperation = null;
+}
+
+function appendPoint() {
+    if (shouldResetScreen) resetScreen();
+    if (screen.textContent === "") screen.textContent = "0";
+    if (screen.textContent.includes(".")) return;
+    screen.textContent += ".";
 }
