@@ -23,9 +23,9 @@ html {
 
 body {
     background: #F6F6F6;
-    padding-bottom: 30px;
-    padding-top: 30px;
-    font-size: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 30px;
     text-align: center;
     vertical-align: middle;
 }
@@ -68,7 +68,7 @@ input {
 
 /* Span across 3 columns for the CLEAR and ZERO buttons */
 .is-equals {
-    grid-row: span 4;
+    grid-row: span 3;
 }
 
 .calc-button {
@@ -136,9 +136,11 @@ input {
     background: #666666;
 }
 
-.display {
+.screen {
     text-align: right;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
-    padding: 20px;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid black;
 }
