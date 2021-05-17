@@ -63,3 +63,17 @@ function setOperation(operator) {
     currentOperation = operator;
     shouldResetScreen = true;
 }
+
+function evaluate() {
+    if (currentOperation === null || shouldResetScreen) return;
+    if (currentOperation === "÷" && screen.textContent === "0") {
+        alert("You can't divide by 0!");
+        clear();
+        return;
+    }
+    secondOperand = screen.textContent;
+    screen.textContent = roundResult(
+        operate(currentOperation, firstOperand, secondOperand)
+    );
+    currentOperation = null;
+}
