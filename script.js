@@ -13,7 +13,7 @@ let shouldResetScreen = false;
 
 equalsButton.addEventListener("click", () => console.log("equals button pressed"));
 clearButton.addEventListener("click", clear);
-deleteButton.addEventListener("click", () => console.log("delete button pressed"));
+deleteButton.addEventListener("click", deleteNumber);
 pointButton.addEventListener("click", appendPoint);
 
 
@@ -47,4 +47,8 @@ function appendPoint() {
     if (screen.textContent === "") screen.textContent = "0";
     if (screen.textContent.includes(".")) return;
     screen.textContent += ".";
+}
+
+function deleteNumber() {
+    screen.textContent = screen.textContent.toString().slice(0, -1);
 }
