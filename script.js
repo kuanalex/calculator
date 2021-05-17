@@ -16,11 +16,21 @@ clearButton.addEventListener("click", () => console.log("clear button pressed"))
 deleteButton.addEventListener("click", () => console.log("delete button pressed"));
 pointButton.addEventListener("click", () => console.log("decimal button pressed"));
 
+
 numberButtons.forEach((button) =>
-    button.addEventListener("click", () => console.log("number button pressed"))
+    button.addEventListener("click", () => appendNumber(button.textContent))
 );
 
 operatorButtons.forEach((button) =>
-    button.addEventListener("click", () => console.log("operation button pressed"))
+    button.addEventListener("click", () => setOperation(button.textContent))
 );
 
+function appendNumber(number) {
+    if (screen.textContent === "0" || shouldResetScreen) resetScreen();
+    screen.textContent += number;
+}
+
+function resetScreen() {
+    screen.textContent = "";
+    shouldResetScreen = false;
+}
