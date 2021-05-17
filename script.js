@@ -51,4 +51,15 @@ function appendPoint() {
 
 function deleteNumber() {
     screen.textContent = screen.textContent.toString().slice(0, -1);
+
+    if(screen.textContent === "") {
+        screen.textContent = "0";
+    }
+}
+
+function setOperation(operator) {
+    if (currentOperation !== null) evaluate();
+    firstOperand = screen.textContent;
+    currentOperation = operator;
+    shouldResetScreen = true;
 }
