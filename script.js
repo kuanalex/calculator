@@ -11,7 +11,7 @@ let secondOperand = "";
 let currentOperation = null;
 let shouldResetScreen = false;
 
-equalsButton.addEventListener("click", () => console.log("equals button pressed"));
+equalsButton.addEventListener("click", evaluate);
 clearButton.addEventListener("click", clear);
 deleteButton.addEventListener("click", deleteNumber);
 pointButton.addEventListener("click", appendPoint);
@@ -52,7 +52,7 @@ function appendPoint() {
 function deleteNumber() {
     screen.textContent = screen.textContent.toString().slice(0, -1);
 
-    if(screen.textContent === "") {
+    if (screen.textContent === "") {
         screen.textContent = "0";
     }
 }
@@ -76,4 +76,42 @@ function evaluate() {
         operate(currentOperation, firstOperand, secondOperand)
     );
     currentOperation = null;
+}
+
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
+}
+
+function add(a, b) {
+    return a + b;
+}
+
+function substract(a, b) {
+    return a - b;
+}
+
+function multiply(a, b) {
+    return a * b;
+}
+
+function divide(a, b) {
+    return a / b;
+}
+
+function operate(operator, a, b) {
+    a = Number(a);
+    b = Number(b);
+    switch (operator) {
+        case "+":
+            return add(a, b);
+        case "−":
+            return substract(a, b);
+        case "×":
+            return multiply(a, b);
+        case "÷":
+            if (b === 0) return null;
+            else return divide(a, b);
+        default:
+            return null;
+    }
 }
