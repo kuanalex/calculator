@@ -12,7 +12,7 @@ let currentOperation = null;
 let shouldResetScreen = false;
 
 equalsButton.addEventListener("click", () => console.log("equals button pressed"));
-clearButton.addEventListener("click", () => console.log("clear button pressed"));
+clearButton.addEventListener("click", clear);
 deleteButton.addEventListener("click", () => console.log("delete button pressed"));
 pointButton.addEventListener("click", () => console.log("decimal button pressed"));
 
@@ -33,4 +33,11 @@ function appendNumber(number) {
 function resetScreen() {
     screen.textContent = "";
     shouldResetScreen = false;
+}
+
+function clear() {
+    screen.textContent = "0";
+    firstOperand = "";
+    secondOperand = "";
+    currentOperation = null;
 }
