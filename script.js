@@ -16,3 +16,11 @@ clearButton.addEventListener("click", () => console.log("clear button pressed"))
 deleteButton.addEventListener("click", () => console.log("delete button pressed"));
 pointButton.addEventListener("click", () => console.log("decimal button pressed"));
 
+numberButtons.forEach((button) =>
+    button.addEventListener("click", () => console.log("number button pressed"))
+);
+
+operatorButtons.forEach((button) =>
+    button.addEventListener("click", () => console.log("operation button pressed"))
+);
+
